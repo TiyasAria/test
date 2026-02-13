@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Background Test App</title>
+  <style>
+    body {
+      font-family: Arial;
+      padding: 20px;
+      background: #f4f4f4;
+    }
+
+    #status {
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<h3>🧪 Background Running Test</h3>
+<div>Counter:</div>
+<div id="status">0</div>
+
+<script>
+  console.log("APP INSTANCE CREATED:", Date.now());
+
+  let counter = 0;
+
+  setInterval(() => {
+    counter++;
+    document.getElementById("status").innerText = counter;
+    console.log("Still running:", counter);
+  }, 1000);
+
+  window.addEventListener("beforeunload", () => {
+    console.log("APP DESTROYED");
+  });
+
+  document.addEventListener("visibilitychange", () => {
+    console.log("Visibility changed:", document.visibilityState);
+  });
+</script>
+
+</body>
+</html>
